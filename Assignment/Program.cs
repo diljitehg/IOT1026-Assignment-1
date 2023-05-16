@@ -1,4 +1,5 @@
-﻿namespace Assignment
+﻿
+namespace Assignment
 {
     public static class ArrayReplicator
     {

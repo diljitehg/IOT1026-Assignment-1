@@ -1,16 +1,16 @@
 ﻿using System;
 
-public class Program
+class Program
 {
-    public static int AskForNumber(string text)
+    static int AskForNumber(string text)
     {
         Console.WriteLine(text);
-        string response = Console.ReadLine();
-        int number = int.Parse(response);
+        string userInput = Console.ReadLine();
+        int number = int.Parse(userInput);
         return number;
     }
 
-    public static int AskForNumberInRange(string text, int min, int max)
+    static int AskForNumberInRange(string text, int min, int max)
     {
         int number;
         do
@@ -21,12 +21,26 @@ public class Program
         return number;
     }
 
-    public static void Main()
+    static int[] ReplicateArray(int[] original)
     {
-        int number = AskForNumber("Enter a number: ");
-        Console.WriteLine("You entered: " + number);
+        int[] copiedArray = new int[original.Length];
+        Array.Copy(original, copiedArray, original.Length);
+        return copiedArray;
+    }
 
-        int numberInRange = AskForNumberInRange("Enter a number between 1 and 10: ", 1, 10);
-        Console.WriteLine("You entered a number within the range: " + numberInRange);
+    static void Main()
+    {
+        int size = AskForNumberInRange("Enter the size of the array (0 to 5): ", 0, 5);
+        int[] originalArray = new int[size];
+
+        for (int i = 0; i < size; i++)
+        {
+            originalArray[i] = AskForNumber("Enter an integer: ");
+        }
+
+        int[] copiedArray = ReplicateArray(originalArray);
+
+        Console.WriteLine("Original Array: " + string.Join(", ", originalArray));
+        Console.WriteLine("Copied Array: " + string.Join(", ", copiedArray));
     }
 }

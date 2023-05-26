@@ -29,7 +29,10 @@ ToString Method: The ToString method is overridden to provide a string represent
 
 The project also includes a testing component that utilizes unit tests to verify the functionality of the TreasureChest class. The provided test cases cover various state transitions, including valid and invalid actions.
 
+![image](https://github.com/diljitehg/IOT1026-Assignment-1/assets/131228332/3c0cacf2-91d0-40f8-91ff-0c787234d5a5)
 
+        
+        
 [Assignment Instructions](docs/instructions.md)  
 [How to start coding](docs/how-to-use.md)  
 [How to update status badges](docs/how-to-update-badges.md)

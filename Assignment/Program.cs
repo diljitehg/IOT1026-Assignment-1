@@ -1,53 +1,67 @@
- 
+
 using System;
 
 public class Program
 {
+    public static void Main()
+    {
+        // Task 1 - AskForNumberInRange
+        int number = AskForNumberInRange("Enter a number between 10 and 20: ", 10, 20);
+        Console.WriteLine("Number entered: " + number);
+        
+        // Task 2 - ReplicateArray
+        int size = AskForNumberInRange("Enter the size of the array (0-5): ", 0, 5);
+        int[] originalArray = new int[size];
+        
+        for (int i = 0; i < size; i++)
+        {
+            int num = AskForNumber("Enter an integer: ");
+            originalArray[i] = num;
+        }
+        
+        int[] copiedArray = ReplicateArray(originalArray);
+        Console.WriteLine("Copied array: ");
+        for (int i = 0; i < copiedArray.Length; i++)
+        {
+            Console.Write(copiedArray[i] + " ");
+        }
+    }
+
     public static int AskForNumber(string text)
     {
         Console.WriteLine(text);
-        string input = Console.ReadLine();
-        int number = Convert.ToInt32(input);
+        string response = Console.ReadLine();
+        int number = int.Parse(response);
         return number;
     }
 
     public static int AskForNumberInRange(string text, int min, int max)
     {
-        int number;
-        do
+        while (true)
         {
-            number = AskForNumber(text);
-        } while (number < min || number > max);
-
-        return number;
+            int number = AskForNumber(text);
+            if (number >= min && number <= max)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("Number out of range. Try again.");
+            }
+        }
     }
 
     public static int[] ReplicateArray(int[] original)
     {
-        int[] replicatedArray = new int[original.Length];
+        int[] copiedArray = new int[original.Length];
+        
         for (int i = 0; i < original.Length; i++)
         {
-            replicatedArray[i] = original[i];
+            copiedArray[i] = original[i];
         }
-        return replicatedArray;
+        
+        return copiedArray;
     }
+}
 
-    public static void Main(string[] args)
-    {
-        int size = AskForNumberInRange("Enter the size of the array (0-5):", 0, 5);
-        int[] userArray = new int[size];
 
-        for (int i = 0; i < size; i++)
-        {
-            userArray[i] = AskForNumber($"Enter element #{i + 1}:");
-        }
-
-        int[] replicatedArray = ReplicateArray(userArray);
-
-        Console.WriteLine("Copied array:");
-        foreach (int num in replicatedArray)
-        {
-            Console.WriteLine(num);
-        }
-    }
-}        

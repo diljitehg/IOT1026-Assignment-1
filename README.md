@@ -17,11 +17,7 @@
         
 # IOT1026-Assignment-1
 
-        This project is an assessment solution consisting of two tasks. The first task focuses on user input handling, while the second task involves array manipulation. It includes methods to ask the user for a number and validate it within a specified range. Additionally, it provides a method to create a deep copy of an array. The project includes tests to ensure the correctness of the array replication functionality.
-
-
-
-
+This project is an assessment solution consisting of two tasks. The first task focuses on user input handling, while the second task involves array manipulation. It includes methods to ask the user for a number and validate it within a specified range. Additionally, it provides a method to create a deep copy of an array. The project includes tests to ensure the correctness of the array replication functionality.
 
         
 [Assignment Instructions](docs/instructions.md)  

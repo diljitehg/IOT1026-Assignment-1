@@ -1,67 +1,60 @@
-
 using System;
 
-public class Program
+namespace Assignment
 {
-    public static void Main()
+    public static class ArrayReplicator
     {
-        // Task 1 - AskForNumberInRange
-        int number = AskForNumberInRange("Enter a number between 10 and 20: ", 10, 20);
-        Console.WriteLine("Number entered: " + number);
-        
-        // Task 2 - ReplicateArray
-        int size = AskForNumberInRange("Enter the size of the array (0-5): ", 0, 5);
-        int[] originalArray = new int[size];
-        
-        for (int i = 0; i < size; i++)
+        public static int[] ReplicateArray(int[] original)
         {
-            int num = AskForNumber("Enter an integer: ");
-            originalArray[i] = num;
-        }
-        
-        int[] copiedArray = ReplicateArray(originalArray);
-        Console.WriteLine("Copied array: ");
-        for (int i = 0; i < copiedArray.Length; i++)
-        {
-            Console.Write(copiedArray[i] + " ");
-        }
-    }
-
-    public static int AskForNumber(string text)
-    {
-        Console.WriteLine(text);
-        string response = Console.ReadLine();
-        int number = int.Parse(response);
-        return number;
-    }
-
-    public static int AskForNumberInRange(string text, int min, int max)
-    {
-        while (true)
-        {
-            int number = AskForNumber(text);
-            if (number >= min && number <= max)
+            int size = original.Length;
+            int[] copiedArray = new int[size];
+            for (int i = 0; i < size; i++)
             {
-                return number;
+                copiedArray[i] = original[i];
             }
-            else
+            return copiedArray;
+        }
+
+        public static int AskForNumber(string text)
+        {
+            Console.Write(text);
+            string userInput = Console.ReadLine();
+            int number = Convert.ToInt32(userInput);
+            return number;
+        }
+
+        public static int AskForNumber(string text, int min, int max)
+        {
+            int userInput = AskForNumber(text);
+            while (userInput < min || userInput > max)
             {
-                Console.WriteLine("Number out of range. Try again.");
+                Console.WriteLine("Invalid input. Please enter a number within the specified range.");
+                userInput = AskForNumber(text);
             }
+            return userInput;
         }
     }
 
-    public static int[] ReplicateArray(int[] original)
+    class Program
     {
-        int[] copiedArray = new int[original.Length];
-        
-        for (int i = 0; i < original.Length; i++)
+        static void Main()
         {
-            copiedArray[i] = original[i];
+            const int Min = 0;
+            const int Max = 5;
+
+            int size = ArrayReplicator.AskForNumber("Enter the size of the array (0-5): ", Min, Max);
+            int[] originalArray = new int[size];
+            for (int i = 0; i < size; i++)
+            {
+                originalArray[i] = ArrayReplicator.AskForNumber("Enter an integer: ");
+            }
+
+            int[] copiedArray = ArrayReplicator.ReplicateArray(originalArray);
+            Console.WriteLine("Copied Array:");
+            foreach (int number in copiedArray)
+            {
+                Console.WriteLine(number);
+            }
         }
-        
-        return copiedArray;
     }
 }
-
-
